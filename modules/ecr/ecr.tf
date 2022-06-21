@@ -15,5 +15,5 @@ resource "aws_ecr_repository" "repository" {
 
 resource "aws_ecr_lifecycle_policy" "policy" {
   repository = aws_ecr_repository.repository.name
-  policy     = var.repository_lifecycle_policy == "" ? templatefile("${path.module}/lifecycle_policy/default_policy.json", {}): var.repository_lifecycle_policy
+  policy     = var.repository_lifecycle_policy == "" ? file("${path.module}/lifecycle_policy/default_policy.json"): var.repository_lifecycle_policy
 }
