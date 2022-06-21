@@ -5,6 +5,12 @@ resource "aws_ecr_repository" "repository" {
   image_scanning_configuration {
     scan_on_push = var.image_scanning_scan_on_push_enabled
   }
+
+  tags = merge(var.repository_additional_tags, {
+    ServiceName = var.service_name
+    Env = var.env
+    Role = var.role
+  })
 }
 
 resource "aws_ecr_lifecycle_policy" "policy" {
