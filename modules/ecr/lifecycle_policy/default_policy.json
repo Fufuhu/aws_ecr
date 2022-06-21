@@ -2,7 +2,7 @@
   "rules": [
     {
       "rulePriority": 1,
-      "description": "Expire images older than 14 days",
+      "description": "Expire untagged images older than 30 days",
       "selection": {
         "tagStatus": "untagged",
         "countType": "sinceImagePushed",
