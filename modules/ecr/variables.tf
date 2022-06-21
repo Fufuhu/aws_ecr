@@ -34,13 +34,14 @@ variable "repository_additional_tags" {
 ECRリポジトリに付与したい追加タグ
 - ServiceName
 - Env
+- Role
 は予約済みのため利用できません。
 DESC
   type = map(string)
   default = {}
   validation {
-    condition     = length(setintersection(keys(var.repository_additional_tags), ["ServiceName", "Env"])) == 0
-    error_message = "Key names, ServiceName and Env is reserved. Not allowed to use them."
+    condition     = length(setintersection(keys(var.repository_additional_tags), ["ServiceName", "Env", "Role"])) == 0
+    error_message = "Key names, ServiceName, Env and Role is reserved. Not allowed to use them."
   }
 }
 
