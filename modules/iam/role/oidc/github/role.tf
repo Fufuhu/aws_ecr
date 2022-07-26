@@ -29,6 +29,14 @@ data "aws_iam_policy_document" "assume_role_policy" {
         "repo:${var.github_organization_name}/${var.github_repository_name}:*"
       ]
     }
+
+    condition {
+      test = "StringEquals"
+      variable = "token.actions.githubusercontent.com:aud"
+      values = [
+        "sts.amazonaws.com"
+      ]
+    }
   }
 }
 
