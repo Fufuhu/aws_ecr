@@ -12,7 +12,7 @@ data "http" "openid_configuration" {
 }
 
 data "tls_certificate" "encryption_key" {
-  url = jsondecode(data.http.openid_configuration.body).jwks_uri
+  url = jsondecode(data.http.openid_configuration.response_body).jwks_uri
 }
 
 resource "aws_iam_openid_connect_provider" "github" {
